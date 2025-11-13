@@ -1,0 +1,244 @@
+/* --- Importação da Fonte --- */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap');
+
+/* --- 💎 Estilos Globais (Glassmorphism) --- */
+body {
+  font-family: 'Inter', sans-serif;
+  /* Fundo gradiente animado para o efeito de vidro */
+  background: linear-gradient(45deg, #6d5b97, #4e54c8, #8f94fb);
+  background-size: 400% 400%;
+  animation: gradientBG 15s ease infinite;
+  color: #ffffff;
+  margin: 0;
+  padding: 40px 20px;
+  min-height: 100vh;
+}
+
+/* Animação do fundo */
+@keyframes gradientBG {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+.App {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+h1 {
+  text-align: center;
+  font-weight: 700;
+  font-size: 2.8rem;
+  color: #fff;
+  text-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+  margin-bottom: 50px;
+}
+
+/* --- 🏠 HomePage: Lista de Filmes (Grid) --- */
+.movie-list {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 30px;
+}
+
+/* Remove sublinhado do link */
+.movie-card-link {
+  text-decoration: none;
+}
+
+/* --- 🖱️ MovieCard (O Card Clicável) --- */
+.movie-card {
+  /* O Efeito de Vidro! */
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border-radius: 12px;
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.3);
+  
+  overflow: hidden;
+  transition: all 0.3s ease;
+  height: 100%;
+}
+
+.movie-card:hover {
+  transform: translateY(-8px);
+  background: rgba(255, 255, 255, 0.2);
+  box-shadow: 0 12px 40px 0 rgba(0, 0, 0, 0.35);
+}
+
+.movie-poster {
+  width: 100%;
+  height: 330px; /* Mais alto */
+  object-fit: cover;
+}
+
+.movie-card-info {
+  padding: 15px;
+}
+
+.movie-card-info h3 {
+  font-size: 1.1rem;
+  color: #fff;
+  margin: 0 0 5px 0;
+}
+
+.movie-card-rating {
+  font-size: 0.9rem;
+  color: #f39c12; /* Dourado */
+  font-weight: 600;
+}
+
+/* --- 🎞️ Página de Detalhes --- */
+.movie-detail-page {
+  /* Card de vidro maior para a página inteira */
+  background: rgba(0, 0, 0, 0.2);
+  backdrop-filter: blur(15px);
+  -webkit-backdrop-filter: blur(15px);
+  border-radius: 16px;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  padding: 30px;
+  max-width: 900px;
+  margin: 20px auto;
+}
+
+/* Link de "Voltar" */
+.back-link {
+  display: inline-block;
+  color: #fff;
+  text-decoration: none;
+  font-size: 1rem;
+  margin-bottom: 25px;
+  background: rgba(255, 255, 255, 0.1);
+  padding: 8px 15px;
+  border-radius: 20px;
+  transition: all 0.2s ease;
+}
+.back-link:hover {
+  background: rgba(255, 255, 255, 0.2);
+}
+
+.detail-content {
+  display: flex;
+  gap: 30px;
+  margin-bottom: 30px;
+}
+
+.detail-poster {
+  width: 250px;
+  height: 370px;
+  object-fit: cover;
+  border-radius: 10px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+}
+
+.detail-info h2 {
+  margin-top: 0;
+  font-size: 2.2rem;
+  color: #fff;
+  text-shadow: 0 1px 4px rgba(0, 0, 0, 0.2);
+}
+.detail-info h3 {
+  font-size: 1.3rem;
+  color: #f39c12;
+  margin-bottom: 20px;
+}
+.detail-synopsis {
+  font-size: 1rem;
+  color: #e0e0e0;
+  line-height: 1.7;
+}
+
+/* --- Seção de Reviews (Formulário + Lista) --- */
+.detail-reviews-section {
+  display: flex;
+  gap: 30px;
+  border-top: 1px solid rgba(255, 255, 255, 0.2);
+  padding-top: 30px;
+}
+
+.review-form-container {
+  flex: 1; /* Ocupa metade */
+}
+.review-list-container {
+  flex: 1; /* Ocupa a outra metade */
+  background: rgba(0, 0, 0, 0.15);
+  padding: 20px;
+  border-radius: 10px;
+}
+
+.review-list-container h3 {
+  margin-top: 0;
+}
+.review-list-container ul {
+  list-style: none;
+  padding: 0;
+  max-height: 250px;
+  overflow-y: auto;
+}
+.review-list-container li {
+  padding: 10px;
+  border-bottom: 1px dashed rgba(255, 255, 255, 0.2);
+  color: #d1d5db;
+}
+.review-list-container li:last-child {
+  border: none;
+}
+.review-list-container li strong {
+  color: #f39c12;
+}
+
+/* --- 📝 Formulário (Estilo Glass) --- */
+.review-form {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+.review-form label {
+  font-weight: 600;
+}
+.review-form select,
+.review-form textarea {
+  width: 100%;
+  padding: 12px;
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  border-radius: 8px;
+  background: rgba(255, 255, 255, 0.1);
+  color: #fff;
+  font-size: 1rem;
+  box-sizing: border-box;
+}
+.review-form select:focus,
+.review-form textarea:focus {
+  outline: none;
+  border-color: #f39c12;
+  box-shadow: 0 0 10px rgba(243, 156, 18, 0.5);
+}
+/* Opções do Select no tema escuro */
+.review-form select option {
+  background: #333;
+  color: #fff;
+}
+
+.review-form button {
+  background: #f39c12;
+  color: #14181c;
+  padding: 12px;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 1.1rem;
+  font-weight: 700;
+  transition: all 0.3s ease;
+}
+.review-form button:hover {
+  background: #fff;
+  box-shadow: 0 0 15px rgba(255, 255, 255, 0.5);
+}
+
+/* Scrollbar */
+::-webkit-scrollbar { width: 8px; }
+::-webkit-scrollbar-track { background: rgba(0,0,0,0.1); border-radius: 10px; }
+::-webkit-scrollbar-thumb { background: rgba(255, 255, 255, 0.3); border-radius: 10px; }
+::-webkit-scrollbar-thumb:hover { background: rgba(255, 255, 255, 0.5); }
